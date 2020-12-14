@@ -16,3 +16,14 @@
   2）参数定阶
   3）残差检验
   4）数据预测
+  
+arma_model = ARMA(data_train,(18,2))
+result = arma_model.fit(disp=-1, method='css')
+pred = result.predict()
+pred_two = result.predict(start= "2019-01-01",end =" 2021-12-31")
+
+plt.plot(pred,color = "orange",label = "fit")
+plt.plot(pred_two,color = "red", label = "predict")
+plt.plot(data_test,color = "black",label = "orignal_test")
+plt.plot(data_train,color = "blue", label = "orignal_train")
+plt.legend(loc=0)
